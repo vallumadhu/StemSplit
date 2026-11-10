@@ -8,12 +8,34 @@ const instru_seek = document.getElementById("instru_seek")
 const instru_play_btn = document.getElementById("instru_play_btn")
 const instruAudio = document.getElementById("instruAudio")
 
+const uploadbox = document.querySelector(".uploadbox")
+const fileInput = document.getElementById("fileInput")
+const source_audio = document.getElementById("source_audio")
+const source_time = document.getElementById("source_time")
+const source_seek = document.getElementById("source_seek")
+const source_play_btn = document.getElementById("source_play_btn")
 
+uploadbox.addEventListener("click", () => {
+    fileInput.click()
+})
+
+fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0]
+    if (!file) return
+
+    const url = URL.createObjectURL(file)
+    source_audio.src = url
+    source_seek.value = 0
+    updateSeekFill(source_seek)
+
+    uploadbox.style.display = "none"
+    source_audio.closest(".source_player").hidden = false
+})
 
 function updateSeekFill(seekEl) {
     const pct = seekEl.max > 0 ? (seekEl.value / seekEl.max) * 100 : 0;
     seekEl.style.background =
-        `linear-gradient(to right, var(--ink-soft) ${pct}%, var(--line) ${pct}%)`;
+        `linear-gradient(to right, var(--muted) ${pct}%, var(--border) ${pct}%)`;
 }
 
 function wireAudioPlayer(audioEl, btnEl, seekEl, timeEl) {
@@ -75,3 +97,9 @@ function wireAudioPlayer(audioEl, btnEl, seekEl, timeEl) {
 
 wireAudioPlayer(vocalsAudio, vocals_play_btn, vocals_seek, vocals_time)
 wireAudioPlayer(instruAudio, instru_play_btn, instru_seek, instru_time)
+wireAudioPlayer(source_audio, source_play_btn, source_seek, source_time)
+
+source_audio.addEventListener("loadedmetadata", () => {
+    source_seek.max = source_audio.duration
+    updateSeekFill(source_seek)
+})

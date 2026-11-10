@@ -1,12 +1,12 @@
 :root {
-    --cream: #F3EDE2;
-    --panel: #FFFCF6;
-    --ink: #252923;
-    --ink-soft: #77796F;
-    --line: #DED6C7;
-    --teal: #28645D;
-    --teal-tint: #DCEBE5;
-    --teal-dim: #28645D33;
+    --bg: #f8f0e2;
+    --surface: #FFFCF6;
+    --text: #252923;
+    --muted: #77796F;
+    --border: #DED6C7;
+    --accent: #28645D;
+    --accent-tint: #DCEBE5;
+    --accent-dim: #28645D33;
 }
 
 * {
@@ -17,8 +17,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--cream);
-    color: var(--ink);
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -41,17 +41,14 @@ header h1 {
 
 header p {
     font-size: 1rem;
-    color: var(--ink-soft);
+    color: var(--muted);
     line-height: 1.5;
 }
 
 header span {
-    color: var(--teal);
+    color: var(--accent);
 }
 
-.source_wrapper {
-    margin: 20px;
-}
 
 .uploadbox {
     width: 400px;
@@ -61,10 +58,23 @@ header span {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: var(--line);
+    background-color: var(--border);
     border-radius: 25px;
-    border: 2px dashed var(--ink-soft);
+    border: 2px dashed var(--muted);
     cursor: pointer;
+}
+
+.source_wrapper {
+    width: 400px;
+    height: 200px;
+    margin: 20px;
+    gap: 10px;
+    background-color: var(--surface);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .uploadbox img {
@@ -82,7 +92,7 @@ header span {
     height: 200px;
     border-radius: 20px;
     margin: 20px;
-    background: var(--panel);
+    background: var(--surface);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,7 +102,7 @@ header span {
 }
 
 .model_box:hover {
-    border-color: var(--teal);
+    border-color: var(--accent);
 }
 
 .model-label {
@@ -104,9 +114,9 @@ header span {
     text-align: center;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--ink);
-    background: var(--cream);
-    border: 1px solid var(--line);
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 4px 10px;
     cursor: pointer;
@@ -114,7 +124,7 @@ header span {
 
 .model_box select:focus {
     outline: none;
-    border-color: var(--teal);
+    border-color: var(--accent);
 }
 
 .model-stats {
@@ -139,7 +149,7 @@ header span {
 }
 
 .model-stats dt {
-    color: var(--ink-soft);
+    color: var(--muted);
 }
 
 .model-stats dd {
@@ -148,7 +158,7 @@ header span {
 
 .instru_wrapper,
 .vocals_wrapper {
-    background-color: var(--panel);
+    background-color: var(--surface);
     padding: 20px;
     text-align: center;
     border-radius: 20px;
@@ -164,8 +174,8 @@ header span {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--panel);
-    border: 1px solid var(--line);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 999px;
     padding: 8px 16px 8px 8px;
 }
@@ -197,7 +207,7 @@ header span {
     appearance: none;
     height: 4px;
     border-radius: 2px;
-    background: var(--ink-soft);
+    background: var(--muted);
     cursor: pointer;
 }
 
@@ -207,7 +217,7 @@ header span {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--ink-soft);
+    background: var(--muted);
     cursor: pointer;
 }
 
@@ -216,14 +226,14 @@ header span {
     height: 12px;
     border: none;
     border-radius: 50%;
-    background: var(--ink-soft);
+    background: var(--muted);
     cursor: pointer;
 }
 
 .time {
     flex-shrink: 0;
     font-size: 0.7rem;
-    color: var(--ink-soft);
+    color: var(--muted);
     min-width: 32px;
     text-align: right;
 }
